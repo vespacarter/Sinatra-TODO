@@ -10,12 +10,12 @@ class TodoList
     end
 
     def delete_task(id)
-    	@tasks.reject!{|task| id = id }
+    	@tasks.reject!{|task| task.id == id }
     end
 
     def find_task_by_id(id)
-    	result = @tasks.select{ |task| id = id}
-    	result
+    	result = @tasks.select{ |task| task.id == id}
+    	return result.size == 0 ? nil : result
     end
 
     def sort_by_created(how = "ASC")
@@ -23,7 +23,7 @@ class TodoList
     	case how
     	when "ASC"
     		sorted_tasks = @tasks.sort { | task1, task2 | task1.created_at <=> task2.created_at }
-   		when "DESC"
+   		when "DES"
 			sorted_tasks = @tasks.sort { | task1, task2 | task2.created_at <=> task1.created_at }
     	else
     		sorted_tasks = @tasks.sort { | task1, task2 | task1.created_at <=> task2.created_at }

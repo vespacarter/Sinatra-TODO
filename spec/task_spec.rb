@@ -25,6 +25,10 @@ describe "Task management" do
   	@mytask.update_content!("Poo")
     expect(@mytask.content).to eq("Poo")
   end
+  it "checks updated timestamp" do
+    @mytask.update_content!("Poo")
+    expect(@mytask.updated_at).not_to eq(nil)
+  end
 
 end
 

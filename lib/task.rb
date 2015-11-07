@@ -1,12 +1,12 @@
 class Task
-    attr_reader :content, :id, :current_id, :completed_status, :created_at
+    attr_reader :content, :id, :current_id, :completed_status, :created_at, :updated_at
     @@current_id = 1
     def initialize(content)
         @content = content
         @id = @@current_id
         @@current_id += 1
         @completed_status = false
-        @created_at = Time.now.strftime("%d/%m/%Y %H:%M")
+        @created_at = Time.now.strftime("%d/%m/%Y %H:%M:%S")
         @updated_at = nil
     end
 
@@ -28,7 +28,7 @@ class Task
 
     def update_content!(text)
     	@content = text
-    	@updated_at = Time.now.strftime("%d/%m/%Y %H:%M")
+    	@updated_at = Time.now.strftime("%d/%m/%Y %H:%M:%S")
     end
 
 end
